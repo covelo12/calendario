@@ -13,8 +13,7 @@ const getDayAppointments = async (req, res) => {
     if(!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({mssg: 'Appointment not found'})
     }
-
-    const appointments = await Appointment.findById({id}).sort({createdAt: -1})
+    const appointments = await Appointment.findById(id).sort({createdAt: -1})
 
     if(!appointments) {
         return res.status(404).json({mssg: 'Appointment not found'})
