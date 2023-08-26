@@ -1,14 +1,13 @@
 const express= require('express')
-const {createAppointment}= require('../controllers/calendarController')
+const {getAllAppointments,
+    getDayAppointments,
+    createAppointment
+    }= require('../controllers/calendarController')
 const router = express.Router()
 
-router.get('/',(req,res) => {
-    res.json({mssg: 'All Appointments'})
-})
+router.get('/',getAllAppointments)
 
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'Day Appointments'})
-})
+router.get('/:id', getDayAppointments)
 
 router.post('/',createAppointment )
 
