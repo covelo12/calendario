@@ -1,7 +1,9 @@
 const express= require('express')
 const {getAllAppointments,
     getDayAppointments,
-    createAppointment
+    createAppointment,
+    deleteAppointment,
+    updateAppointment
     }= require('../controllers/calendarController')
 const router = express.Router()
 
@@ -11,13 +13,9 @@ router.get('/:id', getDayAppointments)
 
 router.post('/',createAppointment )
 
-router.delete('/:id', (req, res) => {
-    res.json({mssg: 'Delete Appointment'})
-})
+router.delete('/:id', deleteAppointment)
 
-router.patch('/:id', (req, res) => {
-    res.json({mssg: 'Update Appointment'})
-})
+router.patch('/:id', updateAppointment)
 
 module.exports = router
 
