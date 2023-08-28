@@ -1,9 +1,5 @@
 const express= require('express')
-const {getAllAppointments,
-    getDayAppointments,
-    createAppointment,
-    deleteAppointment,
-    updateAppointment
+const {getAllAppointments, getDayAppointments, createAppointment, deleteAppointment, updateAppointment
     }= require('../controllers/calendarController')
 const router = express.Router()
 
