@@ -1,6 +1,6 @@
 import{useEffect, useState} from 'react'
-
-import ApppointmentDetails from '../components/ApppointmentDetails'
+import ApppointmentForm from '../components/AppointmentForm'
+import ApppointmentDetails from '../components/AppointmentDetails'
 const Home = () => {
     const [appointments, setappointments] = useState(null) // [state, setState
 
@@ -18,11 +18,8 @@ const Home = () => {
 
     return(
         <div className='home'>
-            <div className='appointments'> 
-                {appointments && appointments.map( (appointments) =>( 
-                    <ApppointmentDetails key={appointments._id} appointments={appointments}/>
-                ))}
-            </div>
+
+            <ApppointmentForm/>
         </div>
 
     )
