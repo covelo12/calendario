@@ -1,6 +1,8 @@
 import{useEffect, useState} from 'react'
 import ApppointmentForm from '../components/AppointmentForm'
 import ApppointmentDetails from '../components/AppointmentDetails'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 const Home = () => {
     const [appointments, setappointments] = useState(null) // [state, setState
 
@@ -18,7 +20,7 @@ const Home = () => {
 
     return(
         <div className='home'>
-
+            <Calendar /> 
             <ApppointmentForm/>
         </div>
 

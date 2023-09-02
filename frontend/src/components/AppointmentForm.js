@@ -2,20 +2,22 @@ import { useState } from "react";
 
 const AppointmentForm = () => {
     const [title, setTitle] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState(new Date());
     const [description, setDescription] = useState('');
     const [type, setType] = useState('');
     const [error, setError] = useState(null);
 
     const handleDateChange = (e) => {
-        // Convert the date to a string before setting it
-        setDate(e.target.value.toString());
+        // Update the date state as a Date object
+        setDate(new Date(e.target.value));
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const appointment = { title, date, type, description };
+        // Convert the date to a string before sending it to the server
+        const formatDate = date.toISOString().split('T')[0];
+        const appointment = { title, date: formatDate, type, description };
 
         const response = await fetch('/api/days', {
             method: 'POST',
@@ -29,7 +31,7 @@ const AppointmentForm = () => {
             setError(json.error);
         }
         if (response.ok) {
-            setDate('');
+            setDate(new Date()); // Reset date to the current date
             setTitle('');
             setDescription('');
             setType('');
@@ -53,7 +55,7 @@ const AppointmentForm = () => {
             <input
                 type='date'
                 onChange={handleDateChange}
-                value={date}
+                value={date.toISOString().split('T')[0]} // Convert Date to string for input value
             />
 
             <label>Appointment Type:</label>
